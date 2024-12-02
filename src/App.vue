@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { CoinGeckoDao } from "@/data/CoinGeckoDao.ts";
+const dao = new CoinGeckoDao()
+dao.ping()
+dao.getCoinsList()
 </script>
 
 <template>
