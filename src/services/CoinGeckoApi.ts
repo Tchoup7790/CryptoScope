@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
+// Define the Coin interface
 interface Coin {
   id: string;
   symbol: string;
@@ -9,16 +10,20 @@ interface Coin {
 const API_URL = "https://api.coingecko.com/api/v3";
 const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
 
-
-export class CoinGeckoDao {
-
-  async ping(): Promise<boolean> {
+/* Create a service to interact with the CoinGecko API
+ * All methods are asynchronous and return a Promise
+ * The methods are static so we can use them without creating an instance of the class
+ * The methods doesn't throw errors but return an empty array or object if an error occurs
+ */
+export class CoinGeckoApi {
+  // Check if the API is reachable
+  static async ping(): Promise<boolean> {
     const options = {
       method: "GET",
       url: `${API_URL}/ping`,
       headers: {
         accept: "application/json",
-      }
+      },
     };
 
     try {
@@ -31,14 +36,15 @@ export class CoinGeckoDao {
     }
   }
 
-  async getCoinsList(): Promise<Coin[]> {
+  // Fetch the list of coins
+  static async getCoinsList(): Promise<Coin[]> {
     const options = {
       method: "GET",
       url: `${API_URL}/coins/list`,
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": API_KEY
-      }
+        "x-cg-demo-api-key": API_KEY,
+      },
     };
 
     try {
@@ -46,19 +52,20 @@ export class CoinGeckoDao {
       console.log(response.data);
       return response.data;
     } catch (error) {
-      console.error('Error fetching coins list:', error);
-      return []
+      console.error("Error fetching coins list:", error);
+      return [];
     }
   }
 
-  async getCoinById(coinId: string): Promise<Coin> {
+  // Fetch a coin by its id
+  static async getCoinById(coinId: string): Promise<Coin> {
     const options = {
       method: "GET",
       url: `${API_URL}/coins/${coinId}`,
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": API_KEY
-      }
+        "x-cg-demo-api-key": API_KEY,
+      },
     };
 
     try {
@@ -71,4 +78,3 @@ export class CoinGeckoDao {
     }
   }
 }
-

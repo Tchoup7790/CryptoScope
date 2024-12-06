@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { CoinGeckoDao } from "@/data/CoinGeckoDao.ts";
-const dao = new CoinGeckoDao()
-dao.ping()
-dao.getCoinsList()
+import { CoinGeckoApi } from "./services/CoinGeckoApi";
+
+CoinGeckoApi.ping();
+const coins = CoinGeckoApi.getCoinsList();
 </script>
 
 <template>
-  <header>
-  </header>
+  <header></header>
 
-  <main>
-  </main>
+  <main></main>
 </template>
 
 <style scoped></style>
