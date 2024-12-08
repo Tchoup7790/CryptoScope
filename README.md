@@ -77,8 +77,4 @@ The app uses the free [CoinGecko API](https://www.coingecko.com/) to fetch crypt
 
 ## **Contact**
 
-For any questions or suggestions, feel free to open an *issue* or contact me directly at **[juliojuliobaptiste@gmail.com](mailto:juliojuliobaptiste@gmail.com?subject=[GitHub] CryptoScope)**.
-
----
-
-Let me know if you’d like further adjustments! 😊
+For any questions or suggestions, feel free to open an *issue* or contact me directly at juliojuliobaptiste@gmail.com.
