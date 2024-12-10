@@ -1,52 +1,27 @@
 :root {
-    --vt-c-white: #ffffff;
-    --vt-c-white-soft: #f8f8f8;
-    --vt-c-white-mute: #f2f2f2;
+    --color-white: #fff;
+    --color-white-soft: #d9d9d9;
 
-    --vt-c-black: #141414;
-    --vt-c-black-soft: #222222;
-    --vt-c-black-mute: #282828;
+    --color-black: #000;
+    --color-black-soft: #111;
 
-    --vt-c-blue: #1737e1;
-    --vt-c-purple: #b6a0fa;
+    --color-blue-light: #3549ba;
+    --color-blue: #1534df;
+    --color-blue-dark: #0d185d;
 
-    --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-    --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-    --vt-c-divblue-dark-1: rgba(84, 84, 84, 0.65);
-    --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-    --vt-c-text-light-1: var(--vt-c-blue);
-    --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-    --vt-c-text-dark-1: var(--vt-c-white);
-    --vt-c-text-dark-2: #14172b;
+    --gradient: linear-gradient(32deg, #0d185d 0%, #1534df 100%);
+    --border-radius: 3.5rem;
+    --padding: 2rem;
+    --gap: 1rem;
+    --blur: 1rem;
 }
 
 :root {
-    --color-background: var(--vt-c-white);
-    --color-background-soft: var(--vt-c-white-soft);
-    --color-background-mute: var(--vt-c-white-mute);
+    --color-background: var(--color-black);
+    --color-background-soft: var(--color-black-soft);
 
-    --color-border: var(--vt-c-divider-light-2);
-    --color-border-hover: var(--vt-c-divider-light-1);
-
-    --color-heading: var(--vt-c-text-light-2);
-    --color-text: var(--vt-c-text-light-1);
-
-    --section-gap: 160px;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-background: var(--vt-c-black);
-        --color-background-soft: var(--vt-c-black-soft);
-        --color-background-mute: var(--vt-c-black-mute);
-
-        --color-border: var(--vt-c-divider-dark-2);
-        --color-border-hover: var(--vt-c-divider-dark-1);
-
-        --color-heading: var(--vt-c-text-dark-1);
-        --color-text: var(--vt-c-text-dark-2);
-    }
+    --color-heading: var(--color-white);
+    --color-text: var(--color-white-soft);
 }
 
 *,
@@ -57,7 +32,19 @@
     font-weight: normal;
 }
 
+@font-face {
+    font-family: "Hagrid";
+    src: url("./Hagrid.ttf");
+}
+
+@font-face {
+    font-family: "Gill";
+    src: url("./GillSans.ttc");
+}
+
 body {
+    display: flex;
+    padding: var(--gap);
     min-height: 100vh;
     color: var(--color-text);
     background: var(--color-background);
@@ -65,19 +52,7 @@ body {
         color 0.5s,
         background-color 0.5s;
     line-height: 1.6;
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Oxygen,
-        Ubuntu,
-        Cantarell,
-        "Fira Sans",
-        "Droid Sans",
-        "Helvetica Neue",
-        sans-serif;
+    font-family: "Gill", "Hagrid";
     font-size: 15px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
