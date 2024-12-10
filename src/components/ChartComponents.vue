@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from "chart.js";
 import { Line } from "vue-chartjs";
 ChartJS.register(
@@ -19,9 +20,12 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Filler,
 );
 </script>
 
 <template>
-  <Line id="testChart" :options="options" :data="data" />
+  <div>
+    <Line id="testChart" :options="options" :data="data" />
+  </div>
 </template>

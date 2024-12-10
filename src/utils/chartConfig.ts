@@ -1,10 +1,18 @@
 export const data = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
+  // labels: ["", "", "", "", "", "", ""],
   datasets: [
     {
-      label: "Data One",
-      backgroundColor: "#f87979",
-      data: [40, 39, 10, 40, 39, 80, 40],
+      label: "test",
+      data: [40, 32, 10, 47, 39, 80, 40],
+      borderColor: "rgba(21, 52, 223, 1)",
+      backgroundColor: "rgba(21, 52, 223, 0.2)",
+      pointBorderColor: "rgba(255, 255, 255, 1)",
+      pointBackgroundColor: "rgba(21, 52, 223, 1)",
+      borderWidth: 3,
+      pointRadius: 6,
+      pointHoverRadius: 8,
+      tension: 0.4,
     },
   ],
 };
@@ -12,4 +20,45 @@ export const data = {
 export const options = {
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      callbacks: {
+        label: (tooltipItem: { raw: number }) => {
+          return `$${tooltipItem.raw.toFixed(2)} (${tooltipItem.raw > 0 ? "+" : ""}${tooltipItem.raw}$)`;
+        },
+      },
+      backgroundColor: "rgba(0, 0, 0, 0.7)",
+      titleFont: { size: 14 },
+      bodyFont: { size: 12 },
+      displayColors: false,
+    },
+  },
+  scales: {
+    x: {
+      grid: { display: false },
+      border: { display: false },
+      ticks: {
+        color: "rgba(255, 255, 255, 0.8)",
+        font: {
+          size: 12,
+        },
+        padding: 15,
+      },
+    },
+    y: {
+      grid: {
+        color: "rgba(255, 255, 255, 0.1)",
+      },
+      border: { display: false },
+      ticks: {
+        color: "rgba(255, 255, 255, 0.8)",
+        font: {
+          size: 12,
+        },
+        padding: 15,
+        callback: (value: number) => `${value} $`,
+      },
+    },
+  },
 };
