@@ -2,6 +2,7 @@ import axios from "axios";
 import type ChartData from "@/types/ChartData";
 import type Coin from "@/types/Coin";
 
+// TODO: Get the good URL for localhost
 const API_URL = "https://api.coingecko.com/api/v3";
 const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
 

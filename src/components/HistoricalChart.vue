@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import { options } from "@/utils/chartConfig";
 import { CoinGeckoApi } from "@/services/CoinGeckoApi";
 import type Data from "@/types/Data";
@@ -14,7 +14,6 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler,
 } from "chart.js";
 import { Line } from "vue-chartjs";
 
@@ -26,8 +25,19 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler,
 );
+
+// Define props for the chart
+const props = defineProps({
+  coinId: {
+    type: String,
+    required: true,
+  },
+  days: {
+    type: Number,
+    required: true,
+  },
+});
 
 // Create reactive chart data with proper typing
 const chartData = ref<Data>({
@@ -39,6 +49,14 @@ const chartData = ref<Data>({
     },
   ],
 });
+
+// Add watch for days prop
+watch(
+  () => props.days,
+  () => {
+    fetchChartData();
+  },
+);
 
 // Function to format date
 const formatDate = (timestamp: number): string => {
@@ -52,8 +70,8 @@ const formatDate = (timestamp: number): string => {
 const fetchChartData = async () => {
   try {
     const marketData: ChartData | null = await CoinGeckoApi.getCoinMarketChart(
-      "bitcoin",
-      30,
+      props.coinId,
+      props.days,
     );
 
     if (marketData && marketData.prices) {
@@ -88,7 +106,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <Line :data="chartData" :options="options" />
-  </div>
+  <Line :data="chartData" :options="options" />
 </template>

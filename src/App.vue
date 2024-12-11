@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import CoinConverter from "@/components/CoinConverter.vue";
-import ChartComponents from "@/components/ChartComponents.vue";
+import HistoricalChart from "@/components/HistoricalChart.vue";
+import ChartComponent from "@/components/ChartComponent.vue";
 </script>
 
 <template>
   <main>
-    <ChartComponents coinId="bitcoin" :days="30" />
+    <div>
+      <HistoricalChart coinId="bitcoin" :days="30" />
+    </div>
     <CoinConverter />
-    <ChartComponents coinId="bitcoin" :days="30" />
+    <ChartComponent />
   </main>
 </template>
 

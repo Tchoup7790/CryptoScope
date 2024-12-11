@@ -6,15 +6,13 @@ export const options: ChartOptions<"line"> = {
   elements: {
     line: {
       borderColor: "rgba(21, 52, 223, 1)",
-      backgroundColor: "rgba(21, 52, 223, 0.2)",
       borderWidth: 3,
       tension: 0.4,
-      fill: true,
     },
     point: {
       borderColor: "rgba(255, 255, 255, 1)",
       backgroundColor: "rgba(255, 255, 255, 1)",
-      radius: 2,
+      radius: 0,
       hoverRadius: 5,
     },
   },
