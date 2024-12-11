@@ -3,11 +3,11 @@
 #app {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: var(--border-radius);
-    flex: 1;
-    padding: 0;
+    width: 100vw;
     margin: 0;
-    font-weight: normal;
 }
 
 h1,
@@ -20,4 +20,10 @@ p,
 label,
 select {
     color: var(--color-text);
+}
+
+@media only screen and (min-width: 1025px) {
+    #app {
+        height: 100vh;
+    }
 }

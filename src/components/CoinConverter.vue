@@ -2,7 +2,6 @@
 import { ref } from "vue";
 const sellCurrency = ref("ETH");
 const buyCurrency = ref("BTC");
-const buyAmount = ref("BTC");
 const sellAmount = ref(32.5);
 </script>
 <template>
@@ -34,7 +33,7 @@ const sellAmount = ref(32.5);
           </select>
         </section>
       </div>
-      <p>{{ buyAmount }}$</p>
+      <p>{{ sellAmount }} $</p>
     </article>
   </form>
 </template>
@@ -97,5 +96,9 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s;
+}
+
+p {
+  font-size: 1.2rem;
 }
 </style>

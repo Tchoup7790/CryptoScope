@@ -21,8 +21,10 @@ import ChartComponents from "./components/ChartComponents.vue";
 main {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  padding: 0;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: var(--gap);
 }
 
@@ -35,6 +37,23 @@ div {
 }
 
 main *:last-child {
-  grid-column: 1/3;
+  grid-column: 1;
+}
+
+@media only screen and (min-width: 490px) {
+  main {
+    padding: var(--padding);
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  main *:last-child {
+    grid-column: 1/3;
+  }
 }
 </style>

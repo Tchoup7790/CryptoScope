@@ -50,8 +50,8 @@
 }
 
 body {
-    display: flex;
-    padding: var(--gap);
+    padding: 0;
+    margin: 0;
     min-height: 100vh;
     background: var(--color-background);
     transition:
