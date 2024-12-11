@@ -15,3 +15,9 @@ h2,
 h3 {
     color: var(--color-heading);
 }
+
+p,
+label,
+select {
+    color: var(--color-text);
+}

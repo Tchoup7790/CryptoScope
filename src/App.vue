@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { CoinGeckoApi } from "./services/CoinGeckoApi";
+import CoinConverter from "./components/CoinConverter.vue";
+import ChartComponents from "./components/ChartComponents.vue";
+// import { CoinGeckoApi } from "./services/CoinGeckoApi";
 
 // if connexion succed, get CoinsList
 // CoinGeckoApi.ping().then(() => {
@@ -8,37 +10,31 @@ import { CoinGeckoApi } from "./services/CoinGeckoApi";
 </script>
 
 <template>
-  <header>
-    <h1>Welcome to CryptoScope</h1>
-  </header>
   <main>
-    <div></div>
-    <div></div>
-    <div></div>
+    <ChartComponents />
+    <CoinConverter />
+    <ChartComponents />
   </main>
 </template>
 
 <style scoped>
-header {
-  background-color: var(--vt-c-blue);
-  display: flex;
-}
-
 main {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: var(--gap);
 }
 
 div {
-  height: 100%;
+  flex: 1;
   width: 100%;
-  border-radius: 12px;
-  background-color: var(--vt-c-purple);
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background: var(--color-background-soft);
 }
 
-main > *:last-child {
+main *:last-child {
   grid-column: 1/3;
 }
 </style>

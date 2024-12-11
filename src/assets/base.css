@@ -9,11 +9,12 @@
     --color-blue: #1534df;
     --color-blue-dark: #0d185d;
 
-    --gradient: linear-gradient(32deg, #0d185d 0%, #1534df 100%);
     --border-radius: 3.5rem;
-    --padding: 2rem;
     --gap: 1rem;
     --blur: 1rem;
+
+    --padding: 2rem;
+    --padding-small: 1rem;
 }
 
 :root {
@@ -21,7 +22,13 @@
     --color-background-soft: var(--color-black-soft);
 
     --color-heading: var(--color-white);
-    --color-text: var(--color-white-soft);
+    --color-text: var(--color-white);
+
+    --color-primary: var(--color-blue-dark);
+    --color-secondary: var(--color-blue);
+    --color-third: var(--color-blue-light);
+
+    --gradient: linear-gradient(32deg, #0d185d 0%, #1534df 100%);
 }
 
 *,
@@ -46,7 +53,6 @@ body {
     display: flex;
     padding: var(--gap);
     min-height: 100vh;
-    color: var(--color-text);
     background: var(--color-background);
     transition:
         color 0.5s,
