@@ -1,3 +1,5 @@
+import type { TooltipItem } from "chart.js";
+
 export const data = {
   labels: ["January", "February", "March", "April", "May", "June", "July"],
   // labels: ["", "", "", "", "", "", ""],
@@ -24,8 +26,9 @@ export const options = {
     legend: { display: false },
     tooltip: {
       callbacks: {
-        label: (tooltipItem: { raw: number }) => {
-          return `$${tooltipItem.raw.toFixed(2)} (${tooltipItem.raw > 0 ? "+" : ""}${tooltipItem.raw}$)`;
+        label: function (tooltipItem: TooltipItem<"line">) {
+          const value = tooltipItem.raw as number;
+          return `$${value.toFixed(2)} (${value > 0 ? "+" : ""}${value}$)`;
         },
       },
       backgroundColor: "rgba(0, 0, 0, 0.7)",
@@ -34,7 +37,7 @@ export const options = {
       displayColors: false,
     },
   },
-  scales: {
+  scale: {
     x: {
       grid: { display: false },
       border: { display: false },
