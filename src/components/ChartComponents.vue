@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { options } from "@/utils/chartConfig";
 import { CoinGeckoApi } from "@/services/CoinGeckoApi";
+import type Data from "../types/Data";
 import type ChartData from "../types/ChartData";
 import type MarketDataPoint from "../types/MarketDataPoint";
 import {
@@ -28,26 +29,13 @@ ChartJS.register(
   Filler,
 );
 
-// Define the chart data type
-interface ChartDataType {
-  labels: string[];
-  datasets: {
-    label: string;
-    data: number[];
-    borderColor?: string;
-    backgroundColor?: string;
-  }[];
-}
-
 // Create reactive chart data with proper typing
-const chartData = ref<ChartDataType>({
+const chartData = ref<Data>({
   labels: [],
   datasets: [
     {
       label: "Price",
       data: [],
-      borderColor: "#2196f3",
-      backgroundColor: "rgba(33, 150, 243, 0.1)",
     },
   ],
 });
@@ -84,8 +72,6 @@ const fetchChartData = async () => {
           {
             label: "Price USD",
             data: formattedData.map((item: MarketDataPoint) => item.price),
-            borderColor: "#2196f3",
-            backgroundColor: "rgba(33, 150, 243, 0.1)",
           },
         ],
       };
