@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import CoinConverter from "./components/CoinConverter.vue";
-import ChartComponents from "./components/ChartComponents.vue";
-// import { CoinGeckoApi } from "./services/CoinGeckoApi";
+import CoinConverter from "@/components/CoinConverter.vue";
+import ChartComponents from "@/components/ChartComponents.vue";
+import { CoinGeckoApi } from "@/services/CoinGeckoApi";
 
+console.log(CoinGeckoApi.getCoinMarketChart("ethereum", 1));
 // if connexion succed, get CoinsList
 // CoinGeckoApi.ping().then(() => {
 //   CoinGeckoApi.getCoinsList();
@@ -11,9 +12,9 @@ import ChartComponents from "./components/ChartComponents.vue";
 
 <template>
   <main>
-    <ChartComponents />
+    <ChartComponents coinId="bitcoin" :days="30" />
     <CoinConverter />
-    <ChartComponents />
+    <ChartComponents coinId="bitcoin" :days="30" />
   </main>
 </template>
 
