@@ -2,9 +2,9 @@
 import { ref, onMounted } from "vue";
 import { options } from "@/utils/chartConfig";
 import { CoinGeckoApi } from "@/services/CoinGeckoApi";
-import type Data from "../types/Data";
-import type ChartData from "../types/ChartData";
-import type MarketDataPoint from "../types/MarketDataPoint";
+import type Data from "@/types/Data";
+import type ChartData from "@/types/ChartData";
+import type MarketDataPoint from "@/types/MarketDataPoint";
 import {
   Chart as ChartJS,
   CategoryScale,

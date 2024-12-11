@@ -1,6 +1,6 @@
 import axios from "axios";
-import type ChartData from "../types/ChartData";
-import type Coin from "../types/Coin";
+import type ChartData from "@/types/ChartData";
+import type Coin from "@/types/Coin";
 
 const API_URL = "https://api.coingecko.com/api/v3";
 const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
@@ -93,7 +93,6 @@ export class CoinGeckoApi {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(`Error fetching market chart for ${coinId}:`, error);
