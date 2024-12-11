@@ -88,7 +88,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="chart-container" style="height: 400px">
+  <div>
     <Line :data="chartData" :options="options" />
   </div>
 </template>
