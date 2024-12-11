@@ -1,11 +1,6 @@
 import axios from "axios";
-
-// Define the Coin interface
-interface Coin {
-  id: string;
-  symbol: string;
-  name: string;
-}
+import type ChartData from "../types/ChartData";
+import type Coin from "../types/Coin";
 
 const API_URL = "https://api.coingecko.com/api/v3";
 const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
@@ -70,11 +65,39 @@ export class CoinGeckoApi {
 
     try {
       const response = await axios.request(options);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(`Error fetching coin with id ${coinId}:`, error);
       return { id: "", symbol: "", name: "" };
+    }
+  }
+
+  // Get the historical data of a coin
+  static async getCoinMarketChart(
+    coinId: string,
+    days: number,
+  ): Promise<ChartData | null> {
+    const options = {
+      method: "GET",
+      url: `${API_URL}/coins/${coinId}/market_chart?days=${days}`,
+      params: {
+        vs_currency: "usd",
+        days: days,
+        interval: "daily",
+      },
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": API_KEY,
+      },
+    };
+
+    try {
+      const response = await axios.request(options);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching market chart for ${coinId}:`, error);
+      return null;
     }
   }
 }
