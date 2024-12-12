@@ -106,5 +106,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <Line :data="chartData" :options="options" />
+  <Line :data="chartData" :options="options(days <= 30)" />
 </template>

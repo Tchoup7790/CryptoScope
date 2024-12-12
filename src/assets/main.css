@@ -1,13 +1,10 @@
 @import "./base.css";
 
 #app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius);
-    width: 100vw;
+    padding: 0;
     margin: 0;
+    height: 100vh;
+    width: 100%;
 }
 
 h1,
@@ -20,10 +17,4 @@ p,
 label,
 select {
     color: var(--color-text);
-}
-
-@media only screen and (min-width: 1025px) {
-    #app {
-        height: 100vh;
-    }
 }

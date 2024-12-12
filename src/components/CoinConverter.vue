@@ -19,7 +19,7 @@ const sellAmount = ref(32.5);
           </select>
         </section>
       </div>
-      <p>{{ sellAmount }} $</p>
+      <p>{{ sellAmount }}$</p>
     </article>
     <article>
       <div>
@@ -33,7 +33,7 @@ const sellAmount = ref(32.5);
           </select>
         </section>
       </div>
-      <p>{{ sellAmount }} $</p>
+      <p>{{ sellAmount }}$</p>
     </article>
   </form>
 </template>
@@ -41,8 +41,10 @@ const sellAmount = ref(32.5);
 <style scoped>
 form {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: start;
+  height: 45vh;
+  min-width: 30vh;
   justify-content: space-between;
   padding: var(--padding);
   border-radius: var(--border-radius);
@@ -54,7 +56,6 @@ article {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: var(--padding);
 }
 
 div {
@@ -73,8 +74,8 @@ h2 {
 }
 
 img {
-  height: 5rem;
-  width: 5rem;
+  height: 5%;
+  width: 5%;
 }
 
 select {
@@ -83,19 +84,6 @@ select {
   font-size: 1rem;
   background: transparent;
   border: none;
-}
-
-button {
-  width: 100%;
-  padding: var(--padding);
-  color: white;
-  border: none;
-  background: transparent;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
 }
 
 p {
