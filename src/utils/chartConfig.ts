@@ -4,6 +4,7 @@ export function options(large: boolean): ChartOptions<"line"> {
   return {
     responsive: true,
     maintainAspectRatio: false,
+    aspectRatio: 2,
     elements: {
       line: {
         borderColor: "rgba(21, 52, 223, 1)",

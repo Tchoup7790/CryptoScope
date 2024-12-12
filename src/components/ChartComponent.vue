@@ -2,14 +2,6 @@
 import HistoricalChart from "@/components/HistoricalChart.vue";
 import { ref } from "vue";
 
-// Prop for style
-const props = defineProps({
-  last: {
-    type: Boolean,
-    required: true,
-  },
-});
-
 // Create ref for handle the time range (time is in days)
 const timeRange = ref(3);
 
@@ -19,7 +11,7 @@ const handleTimeRange = (time: number) => {
 };
 </script>
 <template>
-  <div :style="props.last ? 'order: 2;flex: 1 0 100%;' : null">
+  <article>
     <section>
       <h3>Bitcoin</h3>
       <ul>
@@ -32,33 +24,38 @@ const handleTimeRange = (time: number) => {
       </ul>
     </section>
     <HistoricalChart coinId="bitcoin" :days="timeRange" />
-  </div>
+  </article>
 </template>
 <style scoped>
-div {
+article {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  height: 45vh;
-  width: 100%;
-  padding: var(--padding);
   border-radius: var(--border-radius);
   background: var(--color-background-soft);
+  padding: var(--padding-small);
+  min-height: 0;
 }
 
 section {
   display: flex;
-  padding: 0 var(--padding-small);
   justify-content: space-between;
 }
 
 ul {
   display: flex;
   list-style: none;
-  gap: var(--gap);
+  padding: 0;
+  margin: 0;
 }
 
 button {
   cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  article {
+    padding: var(--padding);
+  }
 }
 </style>

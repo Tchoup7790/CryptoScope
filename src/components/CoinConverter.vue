@@ -40,15 +40,13 @@ const sellAmount = ref(32.5);
 
 <style scoped>
 form {
-  display: flex;
   flex: 1;
+  display: flex;
   flex-direction: column;
-  height: 45vh;
-  min-width: 30vh;
   justify-content: space-between;
-  padding: var(--padding);
   border-radius: var(--border-radius);
   background: var(--gradient);
+  padding: var(--padding-small);
 }
 
 article {
@@ -60,7 +58,6 @@ article {
 
 div {
   display: flex;
-  gap: var(--padding-small);
 }
 
 section {
@@ -88,5 +85,11 @@ select {
 
 p {
   font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  form {
+    padding: var(--padding);
+  }
 }
 </style>
