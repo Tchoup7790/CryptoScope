@@ -6,7 +6,7 @@ const sellAmount = ref(32.5);
 </script>
 <template>
   <form>
-    <h2>Swap</h2>
+    <h2>Balance</h2>
     <article>
       <div>
         <img src="/test.jpeg" alt="test" />

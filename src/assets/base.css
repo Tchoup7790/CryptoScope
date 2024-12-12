@@ -23,6 +23,7 @@
 
     --color-heading: var(--color-white);
     --color-text: var(--color-white);
+    --color-text-soft: var(--color-white-soft);
 
     --color-primary: var(--color-blue-dark);
     --color-secondary: var(--color-blue);
@@ -37,11 +38,6 @@
     box-sizing: border-box;
     margin: 0;
     font-weight: normal;
-}
-
-@font-face {
-    font-family: "Hagrid";
-    src: url("./Hagrid.ttf");
 }
 
 @font-face {
@@ -66,7 +62,7 @@ body {
         color 0.5s,
         background-color 0.5s;
     line-height: 1.6;
-    font-family: "Gill", "Hagrid";
+    font-family: "Gill";
     font-size: 15px;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

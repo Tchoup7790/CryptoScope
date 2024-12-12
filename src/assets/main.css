@@ -11,6 +11,7 @@ h1,
 h2,
 h3 {
     color: var(--color-heading);
+    font-weight: bolder;
 }
 
 p,
