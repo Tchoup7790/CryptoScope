@@ -10,7 +10,7 @@
 h1,
 h2,
 h3 {
-    color: var(--color-heading);
+    color: var(--color-text);
     font-weight: bolder;
 }
 
