@@ -21,7 +21,7 @@ const handleTimeRange = (time: number) => {
 <template>
   <article>
     <section>
-      <h2>Bitcoin, Ethereum, DogeCoin</h2>
+      <h2>Coins</h2>
       <ul>
         <li>
           <button @click="handleTimeRange(3)" :disabled="timeRange == 3">
@@ -65,7 +65,7 @@ article {
   flex-direction: column;
   border-radius: var(--border-radius);
   background: var(--color-background-soft);
-  padding: var(--padding) var(--padding-small);
+  padding: var(--padding-small);
   min-height: 0;
 }
 
@@ -88,7 +88,7 @@ button {
   color: var(--color-secondary);
   border: none;
   border-radius: 0.2rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0.1rem 0.3rem;
   opacity: 0.8;
   transition: opacity 0.4s;
 }
@@ -108,7 +108,13 @@ button:hover {
 
 @media (min-width: 768px) {
   article {
-    padding: var(--padding);
+    padding: var(--padding) var(--padding-small);
+  }
+  button {
+    padding: 0.2rem 0.5rem;
+  }
+  h2 {
+    font-size: 1rem;
   }
 }
 </style>
