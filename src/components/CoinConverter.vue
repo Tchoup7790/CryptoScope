@@ -54,6 +54,9 @@ article {
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  border-radius: var(--border-radius-inner);
+  padding: var(--padding-small);
+  background: var(--color-background-soft);
 }
 
 div {

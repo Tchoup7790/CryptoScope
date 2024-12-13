@@ -2,9 +2,7 @@ import axios from "axios";
 import type ChartData from "@/types/ChartData";
 import type Coin from "@/types/Coin";
 
-// TODO: Get the good URL for localhost
 const API_URL = "https://api.coingecko.com/api/v3";
-const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
 
 /* Create a service to interact with the CoinGecko API
  * All methods are asynchronous and return a Promise
@@ -39,7 +37,6 @@ export class CoinGeckoApi {
       url: `${API_URL}/coins/list`,
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": API_KEY,
       },
     };
 
@@ -60,7 +57,6 @@ export class CoinGeckoApi {
       url: `${API_URL}/coins/${coinId}`,
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": API_KEY,
       },
     };
 
@@ -88,7 +84,6 @@ export class CoinGeckoApi {
       },
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": API_KEY,
       },
     };
 
