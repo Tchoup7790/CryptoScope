@@ -22,12 +22,18 @@ export function options(large: boolean): ChartOptions<"line"> {
       legend: { display: false },
       tooltip: {
         callbacks: {
+          title: function (tooltipItems: TooltipItem<"line">[]) {
+            return tooltipItems[0].dataset.label || "Price";
+          },
           label: function (tooltipItem: TooltipItem<"line">) {
             const value = tooltipItem.raw as number;
-            return `${value.toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}$`;
+            return [
+              `${tooltipItem.label}`,
+              `${value.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}$`,
+            ];
           },
         },
         backgroundColor: "rgba(0, 0, 0, 0.7)",

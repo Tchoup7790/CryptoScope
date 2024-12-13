@@ -2,6 +2,14 @@
 import HistoricalChart from "@/components/HistoricalChart.vue";
 import { ref } from "vue";
 
+// Define props for the chart
+const props = defineProps({
+  coins: {
+    type: Array<string>,
+    required: true,
+  },
+});
+
 // Create ref for handle the time range (time is in days)
 const timeRange = ref(3);
 
@@ -13,7 +21,7 @@ const handleTimeRange = (time: number) => {
 <template>
   <article>
     <section>
-      <h2>Bitcoin</h2>
+      <h2>Bitcoin, Ethereum, DogeCoin</h2>
       <ul>
         <li>
           <button @click="handleTimeRange(3)" :disabled="timeRange == 3">
@@ -47,7 +55,7 @@ const handleTimeRange = (time: number) => {
         </li>
       </ul>
     </section>
-    <HistoricalChart coinId="bitcoin" :days="timeRange" />
+    <HistoricalChart :coinIds="props.coins" :days="timeRange" />
   </article>
 </template>
 <style scoped>

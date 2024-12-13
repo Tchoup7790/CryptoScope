@@ -6,10 +6,10 @@ import ChartComponent from "@/components/ChartComponent.vue";
 <template>
   <main>
     <div>
-      <ChartComponent />
+      <ChartComponent :coins="['bitcoin']" />
       <CoinConverter />
     </div>
-    <ChartComponent />
+    <ChartComponent :coins="['bitcoin', 'ethereum', 'dogecoin']" />
   </main>
 </template>
 

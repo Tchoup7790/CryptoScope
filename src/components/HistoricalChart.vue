@@ -29,8 +29,8 @@ ChartJS.register(
 
 // Define props for the chart
 const props = defineProps({
-  coinId: {
-    type: String,
+  coinIds: {
+    type: Array<string>,
     required: true,
   },
   days: {
@@ -69,8 +69,30 @@ const formatDate = (timestamp: number): string => {
 // Function to fetch and update chart data
 const fetchChartData = async () => {
   try {
+    const promises = props.coinIds.map((coinId) => fetchData(coinId));
+    const results = await Promise.all(promises);
+
+    // Filter out any undefined results
+    const validResults = results.filter(
+      (result): result is Data => result !== undefined,
+    );
+
+    if (validResults.length > 0) {
+      chartData.value = {
+        labels: validResults[0].labels,
+        datasets: validResults.map((result) => result.datasets[0]),
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching chart data:", error);
+  }
+};
+
+// Functoin to fetch each coin data
+const fetchData = async (coinId: string): Promise<Data | undefined> => {
+  try {
     const marketData: ChartData | null = await CoinGeckoApi.getCoinMarketChart(
-      props.coinId,
+      coinId,
       props.days,
     );
 
@@ -83,19 +105,32 @@ const fetchChartData = async () => {
         }),
       );
 
-      // Update chart data
-      chartData.value = {
+      // set color
+      let borderColor = "#FFD700";
+      if (props.coinIds[0] === coinId) {
+        borderColor = "rgba(21, 52, 223, 1)";
+      } else if (props.coinIds[1] === coinId) {
+        borderColor = "rgba(25, 36, 171, 1)";
+      } else {
+        borderColor = "rgba(10, 46, 253, 1)";
+      }
+
+      // return coin Data
+      return {
         labels: formattedData.map((item: MarketDataPoint) => item.date),
         datasets: [
           {
-            label: "Price USD",
+            label: coinId,
             data: formattedData.map((item: MarketDataPoint) => item.price),
+            borderColor: borderColor,
           },
         ],
       };
     }
+    return undefined;
   } catch (error) {
     console.error("Error fetching chart data:", error);
+    return undefined;
   }
 };
 
