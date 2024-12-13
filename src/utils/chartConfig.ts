@@ -56,7 +56,6 @@ export function options(large: boolean): ChartOptions<"line"> {
           font: {
             size: 12,
           },
-          padding: 15,
           callback: function (tickValue: number | string): string | null {
             if (typeof tickValue === "number") {
               return `${tickValue.toLocaleString(undefined, {

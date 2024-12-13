@@ -57,7 +57,7 @@ article {
   flex-direction: column;
   border-radius: var(--border-radius);
   background: var(--color-background-soft);
-  padding: var(--padding-small);
+  padding: var(--padding) var(--padding-small);
   min-height: 0;
 }
 
