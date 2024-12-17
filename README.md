@@ -2,6 +2,8 @@
 
 CryptoScope is a simple and intuitive application for tracking and analyzing cryptocurrencies.
 
+[preview here](https://crypto-scope-coral.vercel.app)
+
 ---
 
 ## **Features**
