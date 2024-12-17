@@ -88,7 +88,7 @@ const fetchChartData = async () => {
   }
 };
 
-// Functoin to fetch each coin data
+// Function to fetch each coin data
 const fetchData = async (coinId: string): Promise<Data | undefined> => {
   try {
     const marketData: ChartData | null = await CoinGeckoApi.getCoinMarketChart(
