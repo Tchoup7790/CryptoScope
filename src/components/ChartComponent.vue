@@ -65,7 +65,7 @@ article {
   flex-direction: column;
   border-radius: var(--border-radius);
   background: var(--color-background-soft);
-  padding: var(--padding-small);
+  padding: var(--gap) var(--padding-small);
   min-height: 0;
 }
 
@@ -108,13 +108,10 @@ button:hover {
 
 @media (min-width: 768px) {
   article {
-    padding: var(--padding) var(--padding-small);
+    padding: var(--padding);
   }
   button {
     padding: 0.2rem 0.5rem;
-  }
-  h2 {
-    font-size: 1rem;
   }
 }
 </style>
