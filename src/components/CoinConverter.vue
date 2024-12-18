@@ -55,7 +55,7 @@ const sellAmount = 33;
 <style scoped>
 form {
   flex: 1;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: var(--gap);
   border-radius: var(--border-radius);
@@ -107,6 +107,7 @@ p {
 
 @media (min-width: 768px) {
   form {
+    display: flex;
     padding: var(--padding);
   }
 }
