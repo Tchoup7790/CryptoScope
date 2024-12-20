@@ -13,7 +13,9 @@ const handleFromCoinSelected = async (coinId: string | null) => {
     : null;
 };
 const handleToCoinSelected = async (coinId: string | null) => {
-  selectedToCoin.value = coinId ? await CoinGeckoApi.getCoinById(coinId) : null;
+  selectedToCoin.value = coinId
+    ? await CoinGeckoApi.getCoinById(coinId)
+    : null;
 };
 
 const sellAmount = 33;
@@ -23,11 +25,7 @@ const sellAmount = 33;
     <h2>Balance</h2>
     <article>
       <div>
-        <img
-          v-if="selectedFromCoin"
-          :src="selectedFromCoin?.image.large"
-          :alt="selectedFromCoin?.id + ' image'"
-        />
+        <img v-if="selectedFromCoin" :src="selectedFromCoin?.image.large" :alt="selectedFromCoin?.id + ' image'" />
         <section>
           <p>{{ selectedFromCoin?.symbol }}</p>
           <CoinSelector @selected-crypto="handleFromCoinSelected" />
@@ -37,14 +35,10 @@ const sellAmount = 33;
     </article>
     <article>
       <div>
-        <img
-          v-if="selectedToCoin"
-          :src="selectedToCoin.image.large"
-          :alt="selectedToCoin.id + ' image'"
-        />
+        <img v-if="selectedToCoin" :src="selectedToCoin?.image.large" :alt="selectedToCoin.id + ' image'" />
         <section>
           <p>{{ selectedToCoin?.symbol }}</p>
-          <CoinSelector @coin-selected="handleToCoinSelected" />
+          <CoinSelector @selected-crypto="handleToCoinSelected" />
         </section>
       </div>
       <p>{{ sellAmount }}$</p>

@@ -57,20 +57,12 @@ onMounted(() => {
 
 <template>
   <div>
-    <input
-      @focus="selectedCrypto = ''"
-      type="text"
-      list="crypto-select"
-      v-model="selectedCrypto"
-      placeholder="Select a Crypto"
-    />
+    <input @focus="selectedCrypto = ''" type="text" list="crypto-select" v-model="selectedCrypto"
+      placeholder="Select a Crypto" />
     <datalist id="crypto-select">
       <option value="" disabled>Select cryptocurrency...</option>
-      <option
-        v-for="crypto in filteredCryptos"
-        :key="crypto.id"
-        :value="crypto.id + ' (' + crypto.symbol.toUpperCase() + ')'"
-      />
+      <option v-for="crypto in filteredCryptos" :key="crypto.id"
+        :value="crypto.id + ' (' + crypto.symbol.toUpperCase() + ')'" />
     </datalist>
   </div>
 </template>
@@ -80,20 +72,14 @@ input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
+  background-color: var(--color-background-soft);
+  color: var(--color-text);
   border-radius: 4px;
   font-size: 16px;
 }
 
-datalist {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%;
-  max-height: 150px;
-  overflow-y: auto;
-  z-index: 1000;
+::placeholder {
+  color: var(--color-text);
 }
 
 option {
