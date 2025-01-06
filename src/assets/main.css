@@ -1,27 +1,22 @@
-@import "./base.css";
+@import './base.css';
 
 #app {
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 h1,
 h2,
-h3 {
-    color: var(--color-text);
-    font-weight: bolder;
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Monoska';
+  font-weight: bold;
 }
 
-p,
-label,
-select {
-    color: var(--color-text);
-}
-
-canvas {
-    display: block;
-    width: 100% !important;
-    height: auto !important;
+p {
+  font-family: 'General';
 }
