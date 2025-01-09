@@ -2,7 +2,7 @@ export interface Coin {
   id: string
   symbol: string
   name: string
-  usd: number
+  price: number
   image: {
     thumb: string
     small: string
