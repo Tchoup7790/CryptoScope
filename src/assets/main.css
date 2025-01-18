@@ -7,16 +7,40 @@
   padding: 2rem;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Monoska';
+h1 {
+  font-size: 40px;
   font-weight: bold;
 }
 
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+h3,
+label {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Monoska';
+}
+
 p {
+  font-size: 14px;
   font-family: 'General';
+}
+
+.small {
+  font-size: 12px;
+}
+
+.main-card {
+  height: 100%;
+  width: 100%;
+  background-color: var(--c-white);
+  border-radius: var(--radius-large);
+  box-shadow: var(--elevation-large);
 }
