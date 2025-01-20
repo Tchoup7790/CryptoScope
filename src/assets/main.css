@@ -1,12 +1,5 @@
 @import './base.css';
 
-#app {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 h1 {
   font-size: 40px;
   font-weight: bold;
@@ -29,18 +22,22 @@ h3 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
   font-family: 'General';
 }
 
 .small {
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.main-card {
+#app {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  margin: 0;
   background-color: var(--c-white);
   border-radius: var(--radius-large);
-  box-shadow: var(--elevation-large);
+  border: var(--border);
+  padding: var(--padding-large);
 }

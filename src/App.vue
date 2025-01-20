@@ -1,7 +1,28 @@
 <template>
   <h1>Init Project</h1>
-  <p>Hello World!</p>
+  <div class="card-parser">
+    <div class="card-parser">
+      <card-component />
+      <card-component />
+    </div>
+    <card-component />
+  </div>
 </template>
+
 <script setup lang="ts">
+import CardComponent from './components/CardComponent.vue';
 console.log('Hello World!')
 </script>
+
+<style scoped>
+.card-parser {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--padding-large);
+}
+
+.card-parser:last-child {
+  flex-direction: column;
+}
+</style>

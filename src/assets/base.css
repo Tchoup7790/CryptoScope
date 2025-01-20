@@ -9,10 +9,10 @@
   --c-border: rgba(124, 124, 124, 0.2);
   --c-background: rgba(248, 249, 244, 1);
 
-  /* box shadow */
-  --elevations-large: 0px 16px 32px 0;
-  --elevations-medium: 0px 8px 16px 0;
-  --elevations-small: 0px 4px 8px 0;
+  /* border */
+  --border: 1px solid rgba(124, 124, 124, 0.2);
+  --border-lemon: 1px solid rgba(194, 222, 70, 1);
+  --border-pine: 1px solid rgba(66, 98, 84, 1);
 
   /* radius */
   --radius-large: 56px;
