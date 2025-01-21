@@ -1,10 +1,15 @@
 <template>
+  <!-- Main title -->
   <h1>CryptoScope</h1>
+  <!-- Container for the card parser -->
   <div class="card-parser">
     <div class="card-parser">
+      <!-- Chart component -->
       <chart-component />
+      <!-- Coin converter component -->
       <coin-converter-component />
     </div>
+    <!-- Another chart component -->
     <chart-component />
   </div>
 </template>
@@ -13,6 +18,7 @@
 import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
 import ChartComponent from '@/components/ChartComponent.vue';
 
+// Log a message to the console
 console.log('Hello World!')
 </script>
 
@@ -22,7 +28,7 @@ console.log('Hello World!')
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: var(--padding-medium);
+  gap: var(--spacing-s);
 }
 
 @media screen and (min-width: 768px) {
@@ -31,7 +37,7 @@ console.log('Hello World!')
   }
 
   .card-parser {
-    gap: var(--padding-large);
+    gap: var(--spacing-l);
   }
 }
 </style>

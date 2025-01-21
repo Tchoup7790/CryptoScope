@@ -1,28 +1,38 @@
 @import './base.css';
 
 h1 {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
 }
 
-h2 {
-  font-size: 18px;
-  font-weight: bold;
+h2,
+input {
+  font-size: 32px;
+  font-weight: normal;
 }
 
 h3,
 label {
-  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 24px;
 }
 
 h1,
 h2,
-h3 {
+input {
   font-family: 'Monoska';
 }
 
 p {
   font-family: 'General';
+}
+
+input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  text-align: end;
 }
 
 #app {
@@ -32,13 +42,14 @@ p {
   width: 100%;
   margin: 0;
   background-color: var(--c-white);
-  border-radius: var(--radius-medium);
+  border-radius: var(--spacing-m);
   border: var(--border);
-  padding: var(--padding-medium);
+  padding: var(--spacing-s);
 }
 
 article {
-  padding: var(--padding-small);
+  padding: var(--spacing-xs);
+  gap: var(--spacing-xs);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,30 +58,82 @@ article {
   width: 100%;
   background-color: var(--c-background);
   border: var(--border);
-  border-radius: var(--radius-small);
+  border-radius: var(--spacing-s);
 }
 
+.coin-card {
+  height: 100%;
+  width: 100%;
+  background-color: var(--c-lemon);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: var(--border);
+  padding: var(--spacing-xs);
+  border-radius: var(--spacing-s);
+}
+
+.coin-image {
+  width: var(--spacing-l);
+  height: var(--spacing-l);
+  border-radius: var(--spacing-xs);
+}
+
+.coin-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.coin-informations {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.coin-value {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  align-items: center;
+}
 @media screen and (min-width: 768px) {
   #app {
-    padding: var(--padding-large);
-    border-radius: var(--radius-large);
+    padding: var(--spacing-l);
+    border-radius: var(--spacing-xl);
   }
   article {
-    padding: var(--padding-medium);
-    border-radius: var(--radius-medium);
+    padding: var(--spacing-s);
+    border-radius: var(--spacing-m);
   }
   h1 {
     font-size: 40px;
-    font-weight: bold;
   }
 
-  h2 {
-    font-size: 32px;
-    font-weight: bold;
+  h2,
+  input {
+    font-size: 40px;
   }
 
   h3,
   label {
-    font-size: 24px;
+    font-size: 32px;
+  }
+
+  .coin-card {
+    padding: var(--spacing-s);
+    border-radius: var(--spacing-s);
+  }
+
+  .coin-image {
+    width: var(--spacing-xl);
+    height: var(--spacing-xl);
+    border-radius: var(--spacing-xxs);
+  }
+
+  .coin-informations {
+    gap: var(--spacing-s);
   }
 }

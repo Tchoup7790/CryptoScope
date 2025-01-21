@@ -1,7 +1,9 @@
+// Import necessary types and axios for HTTP requests
 import type { Coin } from '@/models/interfaces/coin'
 import type { CoinChart } from '@/models/interfaces/dataset'
 import axios from 'axios'
 
+// Base URL for the CoinGecko API
 const API_URL = 'https://api.coingecko.com/api/v3'
 
 export default class CoinGeckoService {
