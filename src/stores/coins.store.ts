@@ -1,13 +1,13 @@
 // Import necessary types and services
 import type { Coin } from '@/models/interfaces/coin'
-import type { CoinChart } from '@/models/interfaces/dataset'
+import type { Dataset } from '@/models/interfaces/dataset'
 import CoinGeckoService from '@/services/coin-gecko.service'
 import { defineStore } from 'pinia'
 
 // Define the state interface for the store
 export interface CoinState {
   coins: Coin[]
-  coinsChart: { [id: string]: { [days: number]: CoinChart } }
+  coinsChart: { [id: string]: { [days: number]: Dataset } }
   coinList: string[]
   daysList: number[]
 }

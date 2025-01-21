@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
-import ChartComponent from '@/components/ChartComponent.vue';
+import ChartComponent from '@/components/ChartComponent.vue'
 
 // Log a message to the console
 console.log('Hello World!')

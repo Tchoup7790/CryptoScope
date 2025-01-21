@@ -9,9 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import CoinInputComponent from "@/components/CoinInputComponent.vue";
-import CoinOutputComponent from "@/components/CoinOutputComponent.vue";
-import { reactive } from "vue";
+import CoinInputComponent from '@/components/CoinInputComponent.vue'
+import CoinOutputComponent from '@/components/CoinOutputComponent.vue'
+import { reactive } from 'vue'
 
 // Define the state interface
 interface CoinConverterState {
@@ -20,7 +20,7 @@ interface CoinConverterState {
 
 // Initialize the state
 const state: CoinConverterState = reactive({
-  value: 0
+  value: 0,
 })
 
 // Function to handle the updated value from the input component

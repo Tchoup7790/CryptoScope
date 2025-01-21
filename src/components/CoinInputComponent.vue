@@ -8,21 +8,29 @@
         <h3>{{ state.coin.name }}</h3>
       </div>
       <!-- Display the value in USD -->
-      <p> {{ (state.coin.price * inputValue).toFixed(2) }}$</p>
+      <p>{{ (state.coin.price * inputValue).toFixed(2) }}$</p>
     </div>
     <!-- Coin value input section -->
     <div class="coin-value">
-      <input type="number" min="1" max="99" aria-controls="none" inputmode="numeric" pattern="/d+" v-model="inputValue"
-        @input="updateValue" />
-      <h2> {{ state.coin.symbol }}</h2>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        aria-controls="none"
+        inputmode="numeric"
+        pattern="/d+"
+        v-model="inputValue"
+        @input="updateValue"
+      />
+      <h2>{{ state.coin.symbol }}</h2>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
-import coin from '@/assets/coin.jpeg';
-import type { Coin } from '@/models/interfaces/coin';
+import { reactive, ref } from 'vue'
+import coin from '@/assets/coin.jpeg'
+import type { Coin } from '@/models/interfaces/coin'
 
 // Define the state interface
 interface CoinCardState {
@@ -32,28 +40,28 @@ interface CoinCardState {
 // Initialize the state
 const state: CoinCardState = reactive({
   coin: {
-    id: "bitcoin",
-    symbol: "btc",
-    name: "Bitcoin",
+    id: 'bitcoin',
+    symbol: 'btc',
+    name: 'Bitcoin',
     price: 106109.71,
     image: {
-      thumb: "string",
-      small: "string",
-      large: "string",
-    }
-  }
+      thumb: 'string',
+      small: 'string',
+      large: 'string',
+    },
+  },
 })
 
 // Define emits
 const emit = defineEmits<{
-  (e: 'update:value', value: number): void;
-}>();
+  (e: 'update:value', value: number): void
+}>()
 
 // Initialize the input value
-const inputValue = ref<number>(0);
+const inputValue = ref<number>(0)
 
 // Method to update the value and emit the event
 const updateValue = () => {
-  emit('update:value', inputValue.value * state.coin.price);
-};
+  emit('update:value', inputValue.value * state.coin.price)
+}
 </script>

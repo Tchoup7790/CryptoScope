@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { data, options } from "@/utils/chart-config";
+import { data, options } from '@/utils/chart-config'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,23 +19,15 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Line } from "vue-chartjs";
+} from 'chart.js'
+import { Line } from 'vue-chartjs'
 import { mirage } from 'ldrs'
 
 // Register the loading animation
 mirage.register()
 
 // Register Chart.js components
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 </script>
 
 <style scoped>
