@@ -1,5 +1,6 @@
 <template>
   <div class="chart-card">
+    <l-mirage size="70" speed="6" color="rgb(194, 222, 70)"></l-mirage>
     <Line v-show="false" :data="data" :options="options" />
   </div>
 </template>
@@ -17,6 +18,9 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "vue-chartjs";
+import { mirage } from 'ldrs'
+
+mirage.register()
 
 ChartJS.register(
   CategoryScale,
