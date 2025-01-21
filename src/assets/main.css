@@ -37,7 +37,14 @@ p {
   width: 100%;
   margin: 0;
   background-color: var(--c-white);
-  border-radius: var(--radius-large);
+  border-radius: var(--radius-medium);
   border: var(--border);
-  padding: var(--padding-large);
+  padding: var(--padding-medium);
+}
+
+@media screen and (min-width: 768px) {
+  #app {
+    padding: var(--padding-large);
+    border-radius: var(--radius-large);
+  }
 }

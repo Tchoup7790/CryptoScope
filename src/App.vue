@@ -2,10 +2,10 @@
   <h1>CrypoScope</h1>
   <div class="card-parser">
     <div class="card-parser">
-      <card-component />
       <chart-component />
+      <card-component />
     </div>
-    <card-component />
+    <chart-component />
   </div>
 </template>
 
@@ -21,10 +21,17 @@ console.log('Hello World!')
   height: 100%;
   display: flex;
   justify-content: space-between;
-  gap: var(--padding-large);
+  flex-direction: column;
+  gap: var(--padding-medium);
 }
 
-.card-parser:last-child {
-  flex-direction: column;
+@media screen and (min-width: 768px) {
+  .card-parser:first-child {
+    flex-direction: row;
+  }
+
+  .card-parser {
+    gap: var(--padding-large);
+  }
 }
 </style>
