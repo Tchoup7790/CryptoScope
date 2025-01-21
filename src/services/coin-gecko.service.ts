@@ -1,5 +1,5 @@
 import type { Coin } from '@/models/interfaces/coin'
-import type { CoinChart } from '@/models/interfaces/coin-chart'
+import type { CoinChart } from '@/models/interfaces/dataset'
 import axios from 'axios'
 
 const API_URL = 'https://api.coingecko.com/api/v3'

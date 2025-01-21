@@ -1,16 +1,18 @@
 <template>
-  <h1>Init Project</h1>
+  <h1>CrypoScope</h1>
   <div class="card-parser">
     <div class="card-parser">
       <card-component />
-      <card-component />
+      <chart-component />
     </div>
     <card-component />
   </div>
 </template>
 
 <script setup lang="ts">
-import CardComponent from './components/CardComponent.vue';
+import CardComponent from './components/CardComponent.vue'
+import ChartComponent from './components/ChartComponent.vue';
+
 console.log('Hello World!')
 </script>
 

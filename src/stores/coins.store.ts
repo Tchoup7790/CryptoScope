@@ -1,5 +1,5 @@
 import type { Coin } from '@/models/interfaces/coin'
-import type { CoinChart } from '@/models/interfaces/coin-chart'
+import type { CoinChart } from '@/models/interfaces/dataset'
 import CoinGeckoService from '@/services/coin-gecko.service'
 import { defineStore } from 'pinia'
 
