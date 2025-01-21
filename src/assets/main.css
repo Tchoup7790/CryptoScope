@@ -35,6 +35,16 @@ input {
   text-align: end;
 }
 
+input:focus {
+  outline: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -98,7 +108,9 @@ article {
   width: 100%;
   justify-content: end;
   align-items: center;
+  gap: var(--spacing-s);
 }
+
 @media screen and (min-width: 768px) {
   #app {
     padding: var(--spacing-l);
