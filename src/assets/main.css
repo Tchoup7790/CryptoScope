@@ -41,10 +41,25 @@ p {
   border: var(--border);
   padding: var(--padding-medium);
 }
+article {
+  padding: var(--padding-small);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--c-background);
+  border: var(--border);
+  border-radius: var(--radius-small);
+}
 
 @media screen and (min-width: 768px) {
   #app {
     padding: var(--padding-large);
     border-radius: var(--radius-large);
+  }
+  article {
+    padding: var(--padding-medium);
+    border-radius: var(--radius-medium);
   }
 }

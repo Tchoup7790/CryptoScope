@@ -1,8 +1,8 @@
 <template>
-  <div class="chart-card">
+  <article class="chart-card">
     <l-mirage size="70" speed="6" color="rgb(194, 222, 70)"></l-mirage>
     <Line v-show="false" :data="data" :options="options" />
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -35,14 +35,7 @@ ChartJS.register(
 
 <style scoped>
 .chart-card {
-  padding: var(--padding-medium);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
   background-color: var(--c-pine);
   border: var(--border-lemon);
-  border-radius: var(--radius-medium);
 }
 </style>
