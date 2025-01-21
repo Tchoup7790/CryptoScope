@@ -1,12 +1,12 @@
 @import './base.css';
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -22,12 +22,7 @@ h3 {
 }
 
 p {
-  font-size: 16px;
   font-family: 'General';
-}
-
-.small {
-  font-size: 14px;
 }
 
 #app {
@@ -41,9 +36,11 @@ p {
   border: var(--border);
   padding: var(--padding-medium);
 }
+
 article {
   padding: var(--padding-small);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -61,5 +58,19 @@ article {
   article {
     padding: var(--padding-medium);
     border-radius: var(--radius-medium);
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  h3,
+  label {
+    font-size: 24px;
   }
 }

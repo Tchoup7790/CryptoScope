@@ -1,17 +1,17 @@
 <template>
-  <h1>CrypoScope</h1>
+  <h1>CryptoScope</h1>
   <div class="card-parser">
     <div class="card-parser">
       <chart-component />
-      <card-component />
+      <coin-converter-component />
     </div>
     <chart-component />
   </div>
 </template>
 
 <script setup lang="ts">
-import CardComponent from './components/CardComponent.vue'
-import ChartComponent from './components/ChartComponent.vue';
+import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
+import ChartComponent from '@/components/ChartComponent.vue';
 
 console.log('Hello World!')
 </script>
