@@ -54,10 +54,8 @@ const inputValue = ref<number>(0)
 
 // Method to update the value and emit the event
 const updateValue = () => {
-  // less than 1, set it to 1, lenght is more than 6, keep the first 6 digits
-  if (inputValue.value < 1) {
-    inputValue.value = 1
-  } else if (inputValue.value.toString().length > 6) {
+  // iflenght is more than 6, keep the first 6 digits
+  if (inputValue.value.toString().length > 6) {
     inputValue.value = parseFloat(inputValue.value.toString().slice(0, 6))
   }
   emit('update:value', inputValue.value * state.coin.price)
