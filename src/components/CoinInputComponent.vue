@@ -8,7 +8,7 @@
         <h3>{{ state.coin.name }}</h3>
       </div>
       <!-- Display the value in USD -->
-      <p>{{ state.coin.price.toFixed(2) }}$</p>
+      <p class="small">{{ state.coin.price.toFixed(2) }}$</p>
     </div>
     <!-- Coin value input section -->
     <div class="coin-value">

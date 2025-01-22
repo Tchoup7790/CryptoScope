@@ -121,6 +121,11 @@ article {
   align-items: center;
   gap: var(--spacing-s);
 }
+
+.small {
+  font-size: 12px;
+}
+
 @media screen and (min-width: 1025px) {
   h1 {
     font-size: 40px;
@@ -177,6 +182,10 @@ article {
 
   .coin-informations {
     gap: var(--spacing-s);
+  }
+
+  .small {
+    font-size: 14px;
   }
 }
 
