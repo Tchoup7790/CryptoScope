@@ -1,11 +1,14 @@
 :root {
+  /* basic color */
   --c-white: rgba(255, 255, 255, 1);
   --c-black: rgba(22, 23, 12, 1);
   --c-grey: rgba(124, 124, 124, 1);
 
+  /* main color */
   --c-lemon: rgba(194, 222, 70, 1);
   --c-pine: rgba(66, 98, 84, 1);
 
+  /* layout color */
   --c-border: rgba(124, 124, 124, 0.2);
   --c-background: rgba(248, 249, 244, 1);
 
@@ -15,7 +18,7 @@
   --border-pine: 1px solid rgba(66, 98, 84, 1);
 
   /* spacing */
-  --spacing-xxl: 80px;
+  --spacing-xxl: 72px;
   --spacing-xl: 56px;
   --spacing-l: 32px;
   --spacing-m: 24px;
@@ -24,6 +27,7 @@
   --spacing-xxs: 4px;
 }
 
+/* fonts */
 @font-face {
   font-family: 'General';
   src: url('./GeneralSans.otf');
@@ -34,6 +38,7 @@
   src: url('./Monoska.ttf');
 }
 
+/* base */
 *,
 *::before,
 *::after {
@@ -61,9 +66,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   body {
     font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  body {
     padding: var(--spacing-xxl);
   }
 }

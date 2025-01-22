@@ -31,13 +31,17 @@ console.log('Hello World!')
   gap: var(--spacing-s);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .card-parser:first-child {
     flex-direction: row;
   }
 
+}
+
+@media screen and (min-width: 1025px) {
   .card-parser {
     gap: var(--spacing-l);
   }
+
 }
 </style>

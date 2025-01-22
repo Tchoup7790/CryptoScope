@@ -1,5 +1,6 @@
 @import './base.css';
 
+/* fonts */
 h1 {
   font-size: 32px;
   font-weight: bold;
@@ -7,7 +8,7 @@ h1 {
 
 h2,
 input {
-  font-size: 32px;
+  font-size: 16px;
   font-weight: normal;
 }
 
@@ -15,7 +16,7 @@ h3,
 label {
   text-transform: uppercase;
   font-weight: bolder;
-  font-size: 24px;
+  font-size: 14px;
 }
 
 h1,
@@ -28,6 +29,7 @@ p {
   font-family: 'General';
 }
 
+/* input for converter */
 input {
   width: 100%;
   background-color: transparent;
@@ -39,12 +41,14 @@ input:focus {
   outline: none;
 }
 
+/* disable input number button */
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
+/* edit main */
 #app {
   display: flex;
   flex-direction: column;
@@ -57,6 +61,7 @@ input[type='number']::-webkit-inner-spin-button {
   padding: var(--spacing-s);
 }
 
+/* white card */
 article {
   padding: var(--spacing-xs);
   gap: var(--spacing-xs);
@@ -71,6 +76,7 @@ article {
   border-radius: var(--spacing-s);
 }
 
+/* converter cards */
 .coin-card {
   height: 100%;
   width: 100%;
@@ -83,18 +89,22 @@ article {
   border-radius: var(--spacing-s);
 }
 
+/* converter img */
 .coin-image {
-  width: var(--spacing-l);
-  height: var(--spacing-l);
-  border-radius: var(--spacing-xs);
+  width: var(--spacing-m);
+  height: var(--spacing-m);
+  border-radius: var(--spacing-xxs);
+  display: none;
 }
 
+/* converter details */
 .coin-details {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
+/* converter informations */
 .coin-informations {
   display: flex;
   gap: var(--spacing-xs);
@@ -103,6 +113,7 @@ article {
   height: 100%;
 }
 
+/* converter values part */
 .coin-value {
   display: flex;
   width: 100%;
@@ -110,16 +121,7 @@ article {
   align-items: center;
   gap: var(--spacing-s);
 }
-
-@media screen and (min-width: 768px) {
-  #app {
-    padding: var(--spacing-l);
-    border-radius: var(--spacing-xl);
-  }
-  article {
-    padding: var(--spacing-s);
-    border-radius: var(--spacing-m);
-  }
+@media screen and (min-width: 1025px) {
   h1 {
     font-size: 40px;
   }
@@ -133,6 +135,36 @@ article {
   label {
     font-size: 32px;
   }
+  #app {
+    padding: var(--spacing-l);
+    border-radius: var(--spacing-xl);
+  }
+  article {
+    padding: var(--spacing-s);
+    border-radius: var(--spacing-m);
+  }
+
+  .coin-image {
+    width: var(--spacing-l);
+    height: var(--spacing-l);
+    border-radius: var(--spacing-m);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2,
+  input {
+    font-size: 24px;
+  }
+
+  h3,
+  label {
+    font-size: 24px;
+  }
 
   .coin-card {
     padding: var(--spacing-s);
@@ -140,12 +172,30 @@ article {
   }
 
   .coin-image {
-    width: var(--spacing-xl);
-    height: var(--spacing-xl);
     border-radius: var(--spacing-xxs);
   }
 
   .coin-informations {
     gap: var(--spacing-s);
+  }
+}
+
+@media screen and (min-width: 425px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2,
+  input {
+    font-size: 24px;
+  }
+
+  h3,
+  label {
+    font-size: 24px;
+  }
+
+  .coin-image {
+    display: block;
   }
 }
