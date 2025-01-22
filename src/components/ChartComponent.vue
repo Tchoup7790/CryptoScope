@@ -26,7 +26,7 @@ import {
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 import { mirage } from 'ldrs'
-import { onMounted, reactive, ref, onBeforeUnmount } from 'vue'
+import { onMounted, reactive } from 'vue'
 
 // state
 interface chartState {
@@ -70,5 +70,6 @@ onMounted(() => {
   color: var(--c-black);
   border: var(--border-lemon);
   border-radius: var(--spacing-xs);
+  font-family: 'Monoska';
 }
 </style>

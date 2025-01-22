@@ -8,9 +8,10 @@
       <chart-component />
       <!-- Coin converter component -->
       <coin-converter-component />
+      <chart-component class="mobile" />
     </div>
     <!-- Another chart component -->
-    <chart-component />
+    <chart-component class="no-mobile" />
   </div>
 </template>
 
@@ -28,9 +29,25 @@ import ChartComponent from '@/components/ChartComponent.vue'
   gap: var(--spacing-s);
 }
 
+.mobile {
+  display: flex;
+}
+
+.no-mobile {
+  display: none;
+}
+
 @media screen and (min-width: 769px) {
   .card-parser:first-child {
     flex-direction: row;
+  }
+
+  .no-mobile {
+    display: flex;
+  }
+
+  .mobile {
+    display: none;
   }
 
 }

@@ -30,7 +30,7 @@ export const options = (dot: boolean) => {
       point: {
         borderColor: 'rgba(248, 249, 244,1)',
         backgroundColor: 'rgba(248, 249, 244, 1)',
-        radius: dot ? 4 : 0,
+        radius: dot ? 3 : 0,
         hoverRadius: 5,
       },
     },
