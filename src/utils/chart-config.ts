@@ -52,6 +52,7 @@ export const options = (dot: boolean) => {
             ]
           },
         },
+        backgroundColor: 'rgba(22, 23, 12, 1)',
         titleFont: { size: 14 },
         bodyFont: { size: 12 },
         displayColors: false,
