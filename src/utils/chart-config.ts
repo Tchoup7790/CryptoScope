@@ -1,20 +1,4 @@
-import type { ChartOptions, TooltipItem } from 'chart.js'
-
-export const data = {
-  labels: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-  ],
-  datasets: [{ data: [23, 20, 20, 24, 29, 24, 20, 29, 24, 23] }],
-}
+import type { TooltipItem } from 'chart.js'
 
 export const options = (dot: boolean) => {
   return {
