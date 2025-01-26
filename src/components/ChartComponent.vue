@@ -2,18 +2,19 @@
   <!-- Main container for the chart -->
   <article class="chart-card">
     <!-- Loading animation -->
-    <l-mirage v-show="state.showLoading" size="70" speed="6" color="rgb(194, 222, 70)"></l-mirage>
+    <l-jelly v-show="state.showLoading" size="60" speed="0.9" color="rgb(194, 222, 70)"></l-jelly>
     <!-- coin badge -->
     <div v-if="!state.showLoading" class="coin-badge small">
-      coin badge
+      bitcoin
     </div>
     <!-- Line chart component -->
-    <Line v-if="!state.showLoading" :data="data" :options="options(true)" />
+    <Line v-if="!state.showLoading" :data="coinStore.coinsChart[0]" :options="options(true)" />
   </article>
 </template>
 
 <script setup lang="ts">
-import { data, options } from '@/utils/chart-config'
+// Import necessary modules and components
+import { options } from '@/utils/chart-config'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,35 +26,50 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
-import { mirage } from 'ldrs'
+import { jelly } from 'ldrs'
 import { onMounted, reactive } from 'vue'
+import { useCoinStore } from '@/stores/coins.store'
+import type { Datasets } from '@/models/interfaces/datasets'
 
-// state
+// Define the state interface
 interface chartState {
   showLoading: boolean
+  data: {
+    labels: string[],
+    datasets: Datasets[]
+  }
 }
 
+// Initialize the state
 const state: chartState = reactive({
   showLoading: true,
+  data: {
+    labels: [],
+    datasets: []
+  }
 })
 
-
 // Register the loading animation
-mirage.register()
+jelly.register()
 
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
+// Access the coin store
+const coinStore = useCoinStore()
+
+// Lifecycle hook to simulate loading
 onMounted(() => {
   // Simulate loading
   setTimeout(() => {
     state.showLoading = false
   }, 2000)
-
 })
+
 </script>
 
 <style scoped>
+/* Styles for the chart container */
 .chart-card {
   padding-top: var(--spacing-xl);
   background-color: var(--c-pine);
@@ -61,6 +77,7 @@ onMounted(() => {
   position: relative;
 }
 
+/* Styles for the coin badge */
 .coin-badge {
   position: absolute;
   top: var(--spacing-s);

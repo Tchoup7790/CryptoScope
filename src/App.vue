@@ -18,6 +18,15 @@
 <script setup lang="ts">
 import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
+import { useCoinStore } from './stores/coins.store';
+import { onMounted } from 'vue';
+
+const coinStore = useCoinStore()
+
+onMounted(() => {
+  coinStore.initData()
+  coinStore.initCoinsChart()
+})
 </script>
 
 <style scoped>
