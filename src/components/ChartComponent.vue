@@ -4,11 +4,11 @@
     <!-- Loading animation -->
     <l-jelly v-show="state.showLoading" size="60" speed="0.9" color="rgb(194, 222, 70)"></l-jelly>
     <!-- coin badge -->
-    <div v-if="!state.showLoading" class="coin-badge small">
+    <div v-if="!state.showLoading" class="coin-badge center small">
       bitcoin
     </div>
     <!-- Line chart component -->
-    <Line v-if="!state.showLoading" :data="coinStore.coinsChart[0]" :options="options(true)" />
+    <Line v-if="!state.showLoading" :data="coinStore.coinsChart[0]" :options="options" />
   </article>
 </template>
 
@@ -28,25 +28,16 @@ import {
 import { Line } from 'vue-chartjs'
 import { jelly } from 'ldrs'
 import { onMounted, reactive } from 'vue'
-import { useCoinStore } from '@/stores/coins.store'
-import type { Datasets } from '@/models/interfaces/datasets'
+import { useCoinStore } from '@/stores/coin.store'
 
 // Define the state interface
 interface chartState {
   showLoading: boolean
-  data: {
-    labels: string[],
-    datasets: Datasets[]
-  }
 }
 
 // Initialize the state
 const state: chartState = reactive({
   showLoading: true,
-  data: {
-    labels: [],
-    datasets: []
-  }
 })
 
 // Register the loading animation

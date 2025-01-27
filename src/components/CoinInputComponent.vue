@@ -1,48 +1,46 @@
 <template>
   <!-- Main container for the coin input -->
-  <div class="coin-card">
+  <div v-if="state.coin" class="coin-card">
     <!-- Coin details section -->
     <div class="coin-details">
       <div class="coin-informations">
-        <img :src="coin" alt="coin" class="coin-image" />
-        <h3>{{ state.coin.name }}</h3>
+        <img :src="state.coin.image.small" alt="coin" class="coin-image" />
+        <h3>{{ state.coin.name || 'Unknown' }}</h3>
       </div>
       <!-- Display the value in USD -->
-      <p class="small">{{ state.coin.price.toFixed(2) }}$</p>
+      <p class="small">{{ state.coin.market_data.current_price.usd.toFixed(2) || '0.00' }}$</p>
     </div>
     <!-- Coin value input section -->
     <div class="coin-value">
       <input type="number" min="1" max="99" aria-controls="none" inputmode="numeric" pattern="/d+" v-model="inputValue"
         @input="updateValue" />
-      <h2>{{ state.coin.symbol }}</h2>
+      <h2>{{ state.coin?.symbol || 'N/A' }}</h2>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import coin from '@/assets/coin.jpeg'
-import type { Coin } from '@/models/interfaces/coin'
+import { reactive, ref, watch } from 'vue'
+import { useCoinStore } from '@/stores/coin.store';
+import type { Coin } from '@/models/interfaces/coin';
+
+// Access the coin store
+const coinStore = useCoinStore()
 
 // Define the state interface
-interface CoinCardState {
-  coin: Coin
+interface CoinInputState {
+  coin: Coin | null
 }
 
 // Initialize the state
-const state: CoinCardState = reactive({
-  coin: {
-    id: 'bitcoin',
-    symbol: 'btc',
-    name: 'Bitcoin',
-    price: 106109.71,
-    image: {
-      thumb: 'string',
-      small: 'string',
-      large: 'string',
-    },
-  },
+const state: CoinInputState = reactive({
+  coin: null
 })
+
+// Define props
+const props = defineProps<{
+  coinId: string,
+}>()
 
 // Define emits
 const emit = defineEmits<{
@@ -54,10 +52,19 @@ const inputValue = ref<number>(0)
 
 // Method to update the value and emit the event
 const updateValue = () => {
-  // iflenght is more than 6, keep the first 6 digits
   if (inputValue.value.toString().length > 6) {
     inputValue.value = parseFloat(inputValue.value.toString().slice(0, 6))
   }
-  emit('update:value', inputValue.value * state.coin.price)
+  if (state.coin) {
+    emit('update:value', (inputValue.value * state.coin.market_data.current_price.usd))
+  }
 }
+
+// Watch for changes in the prop value and update the input value
+watch(
+  () => props.coinId,
+  (newVal) => {
+    state.coin = coinStore.coins.find((coin) => coin.id === newVal) || null
+  },
+)
 </script>

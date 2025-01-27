@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
-import { useCoinStore } from './stores/coins.store';
+import { useCoinStore } from './stores/coin.store';
 import { onMounted } from 'vue';
 
 const coinStore = useCoinStore()

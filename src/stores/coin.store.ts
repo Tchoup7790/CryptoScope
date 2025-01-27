@@ -1,5 +1,6 @@
 // Import necessary types and services
 import type { Coin } from '@/models/interfaces/coin'
+import type { CoinChart } from '@/models/interfaces/coin-chart'
 import type { Data } from '@/models/interfaces/data'
 import CoinGeckoService from '@/services/coin-gecko.service'
 import { defineStore } from 'pinia'
@@ -19,8 +20,8 @@ export const useCoinStore = defineStore({
     ({
       coins: [], // List of coins
       coinsChart: [], // Chart data for coins
-      coinList: ['bitcoin'], // List of coin IDs to track
-      daysList: [30, 182, 365], // List of days for chart data
+      coinList: ['bitcoin', 'ethereum'], // List of coin IDs to track
+      daysList: [3], // List of days for chart data
       // daysList: [7, 30, 90, 182, 365], // List of days for chart data
     }) as CoinState,
   actions: {
@@ -37,7 +38,6 @@ export const useCoinStore = defineStore({
         if (getCoinResponse) {
           // Add price to coin data and push to the coins list
           const coin = getCoinResponse
-          coin.price = getCoinResponse.market_data.current_price.usd
           // Add the coin to the coins list
           this.coins.push(coin)
         }
@@ -47,7 +47,7 @@ export const useCoinStore = defineStore({
     // Initialize the coins chart data
     async initCoinsChart() {
       // Initialize the coins chart data
-      let coinChartResponse: APIChartData | null = null
+      let coinChartResponse: CoinChart | null = null
       // Loop through each coin and days combination
       for (const coinId of this.coinList) {
         // Initialize the chart data for the coin
@@ -84,13 +84,6 @@ export const useCoinStore = defineStore({
     },
   },
 })
-
-// Interface representing a market data point
-interface APIChartData {
-  prices: [number, number][];
-  market_caps: Array<number>;
-  total_volumes: Array<number>;
-}
 
 // Interface representing formatted Data for chart
 interface FormattedData {
