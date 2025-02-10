@@ -2,13 +2,15 @@
   <!-- Main container for the chart -->
   <article class="chart-card">
     <!-- Loading animation -->
-    <l-jelly v-show="state.showLoading" size="60" speed="0.9" color="rgb(194, 222, 70)"></l-jelly>
+    <l-jelly v-if="state.showLoading" size="60" speed="0.9" color="rgb(194, 222, 70)"></l-jelly>
     <!-- coin badge -->
-    <div v-if="!state.showLoading" class="coin-badge center small">
-      bitcoin
-    </div>
+    <div v-else class="coin-badge center small">bitcoin</div>
     <!-- Line chart component -->
-    <Line v-if="!state.showLoading" :data="coinStore.coinsChart[0]" :options="options" />
+    <Line
+      v-if="!state.showLoading && coinStore.coinsChart.length > 0"
+      :data="coinStore.coinsChart[0]"
+      :options="options"
+    />
   </article>
 </template>
 
@@ -56,7 +58,6 @@ onMounted(() => {
     state.showLoading = false
   }, 2000)
 })
-
 </script>
 
 <style scoped>

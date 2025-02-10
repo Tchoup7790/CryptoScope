@@ -18,15 +18,6 @@
 <script setup lang="ts">
 import CoinConverterComponent from '@/components/CoinConverterComponent.vue'
 import ChartComponent from '@/components/ChartComponent.vue'
-import { useCoinStore } from './stores/coin.store';
-import { onMounted } from 'vue';
-
-const coinStore = useCoinStore()
-
-onMounted(() => {
-  coinStore.initData()
-  coinStore.initCoinsChart()
-})
 </script>
 
 <style scoped>
@@ -58,13 +49,11 @@ onMounted(() => {
   .mobile {
     display: none;
   }
-
 }
 
 @media screen and (min-width: 1025px) {
   .card-parser {
     gap: var(--spacing-l);
   }
-
 }
 </style>
