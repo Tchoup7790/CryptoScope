@@ -7,7 +7,7 @@ export interface Coin {
     thumb: string // URL for the thumbnail image
     small: string // URL for the small image
     large: string // URL for the large image
-  },
+  }
   market_data: {
     current_price: {
       usd: number // Current price in USD

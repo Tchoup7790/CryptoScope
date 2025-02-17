@@ -32,7 +32,7 @@ export const useCoinStore = defineStore(
       }) as CoinState,
     getters: {
       getCoinById: (state) => (coinId: string) => {
-        return state.coins.find((coin) => coin.id === coinId) || null;
+        return state.coins.find((coin) => coin.id === coinId) || null
       },
     },
     actions: {
@@ -50,7 +50,7 @@ export const useCoinStore = defineStore(
             // Add price to coin data and push to the coins list
             const coin = getCoinResponse
             // Add the coin to the coins list
-            if (!this.coins.find(c => c.id === coin.id)) {
+            if (!this.coins.find((c) => c.id === coin.id)) {
               this.coins.push(coin)
             }
           }
@@ -65,7 +65,7 @@ export const useCoinStore = defineStore(
         for (const coinId of this.coinList) {
           // Initialize the chart data for the coin
           if (!this.coinsChart[coinId]) {
-            this.coinsChart[coinId] = {};
+            this.coinsChart[coinId] = {}
           }
           for (const days of this.daysList) {
             // Fetch historical data for each coin and days combination
@@ -73,16 +73,15 @@ export const useCoinStore = defineStore(
             // If the response is valid, format the data and push it to the coins chart
             if (coinChartResponse?.prices) {
               // Format the data for the chart and push it to the coins chart
-              const formattedData: FormattedData[]
-                = coinChartResponse.prices.map(
-                  ([timestamp, price]: [number, number]) => ({
-                    date: new Date(timestamp).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                    }),
-                    price: price
+              const formattedData: FormattedData[] = coinChartResponse.prices.map(
+                ([timestamp, price]: [number, number]) => ({
+                  date: new Date(timestamp).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
                   }),
-                )
+                  price: price,
+                }),
+              )
 
               // Push the formatted data to the coins chart
               this.coinsChart[coinId][days] = {
@@ -91,19 +90,19 @@ export const useCoinStore = defineStore(
                   {
                     label: coinId,
                     data: formattedData.map((item: FormattedData) => item.price),
-                  }
-                ]
-              };
+                  },
+                ],
+              }
             }
           }
         }
       },
     },
-  }
+  },
 )
 
 // Interface representing formatted Data for chart
 interface FormattedData {
-  date: string;
+  date: string
   price: number
 }

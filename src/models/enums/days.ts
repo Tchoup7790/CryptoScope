@@ -3,4 +3,4 @@ enum DAYS {
   MONTH = 30,
 }
 
-export default DAYS;
+export default DAYS

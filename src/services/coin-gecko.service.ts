@@ -32,7 +32,9 @@ export default class CoinGeckoService {
   // Get the history of a coin by ID and by days
   static async getCoinHistory(coinId: string, days: number): Promise<CoinChart | null> {
     try {
-      const response = await axios.get(`${API_URL}/coins/${coinId}/market_chart?days=${days}&vs_currency=usd`)
+      const response = await axios.get(
+        `${API_URL}/coins/${coinId}/market_chart?days=${days}&vs_currency=usd`,
+      )
       return response.data
     } catch (error) {
       console.error(`Error getCoinHistory with id ${coinId} and days ${days} : `, error)
