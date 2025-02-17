@@ -126,6 +126,16 @@ article {
   font-size: 12px;
 }
 
+/* Styles for the coin badge */
+.coin-badge {
+  padding: var(--spacing-xxs) var(--spacing-xs);
+  background-color: var(--c-background);
+  color: var(--c-black);
+  border: var(--border-lemon);
+  border-radius: var(--spacing-xs);
+  font-family: 'Monoska';
+}
+
 @media screen and (min-width: 1025px) {
   h1 {
     font-size: 40px;

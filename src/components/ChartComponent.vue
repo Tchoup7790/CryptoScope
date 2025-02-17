@@ -4,13 +4,12 @@
     <!-- Loading animation -->
     <l-jelly v-if="state.showLoading" size="60" speed="0.9" color="rgb(194, 222, 70)"></l-jelly>
     <!-- coin badge -->
-    <div v-else class="coin-badge center small">bitcoin</div>
+    <div v-if="!state.showLoading" class="coin-badge-div">
+      <div class="coin-badge center small">{{ props.coinId }}</div>
+      <CoinTimeSelectorComponent @days-selected="updateChart" />
+    </div>
     <!-- Line chart component -->
-    <Line
-      v-if="!state.showLoading && coinStore.coinsChart.length > 0"
-      :data="coinStore.coinsChart[0]"
-      :options="options"
-    />
+    <Line v-if="!state.showLoading && state.coinChart" :data="state.coinChart" :options="options" />
   </article>
 </template>
 
@@ -29,18 +28,49 @@ import {
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 import { jelly } from 'ldrs'
-import { onMounted, reactive } from 'vue'
+import { onMounted, watch, ref } from 'vue'
 import { useCoinStore } from '@/stores/coin.store'
+import CoinTimeSelectorComponent from './CoinTimeSelectorComponent.vue'
+import type { Data } from '@/models/interfaces/data'
+import DAYS from '@/models/enums/days'
+
+// Access the coin store
+const coinStore = useCoinStore()
+
+// Define props
+const props = defineProps({
+  coinId: {
+    type: String,
+    required: true,
+  },
+})
 
 // Define the state interface
-interface chartState {
+interface ChartState {
   showLoading: boolean
+  coinChart: Data | null
 }
 
 // Initialize the state
-const state: chartState = reactive({
+const state = ref<ChartState>({
   showLoading: true,
+  coinChart: coinStore.coinsChart[props.coinId]
+    ? coinStore.coinsChart[props.coinId][DAYS.WEEK]
+    : null,
 })
+
+// Watch for changes in coinId prop
+watch(
+  () => props.coinId,
+  (newCoinId) => {
+    state.value.showLoading = true
+    state.value.coinChart = coinStore.coinsChart[newCoinId]
+      ? coinStore.coinsChart[newCoinId][DAYS.WEEK]
+      : null
+    state.value.showLoading = false
+  },
+  { immediate: true },
+)
 
 // Register the loading animation
 jelly.register()
@@ -48,16 +78,22 @@ jelly.register()
 // Register Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
-// Access the coin store
-const coinStore = useCoinStore()
-
 // Lifecycle hook to simulate loading
 onMounted(() => {
   // Simulate loading
   setTimeout(() => {
-    state.showLoading = false
+    state.value.showLoading = false
   }, 2000)
 })
+
+const updateChart = async (days: number) => {
+  state.value.showLoading = true
+  // Access chart data for the selected coin and time period
+  state.value.coinChart = coinStore.coinsChart[props.coinId]
+    ? coinStore.coinsChart[props.coinId][days]
+    : null
+  state.value.showLoading = false
+}
 </script>
 
 <style scoped>
@@ -69,16 +105,16 @@ onMounted(() => {
   position: relative;
 }
 
-/* Styles for the coin badge */
-.coin-badge {
+/* Style for the coin badge container */
+.coin-badge-div {
   position: absolute;
   top: var(--spacing-s);
+  right: var(--spacing-s);
   left: var(--spacing-s);
-  padding: var(--spacing-xxs) var(--spacing-xs);
-  background-color: var(--c-background);
-  color: var(--c-black);
-  border: var(--border-lemon);
-  border-radius: var(--spacing-xs);
-  font-family: 'Monoska';
+  gap: var(--spacing-xs);
+  padding-bottom: var(-spacing-xs);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 </style>

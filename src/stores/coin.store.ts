@@ -4,11 +4,16 @@ import type { CoinChart } from '@/models/interfaces/coin-chart'
 import type { Data } from '@/models/interfaces/data'
 import CoinGeckoService from '@/services/coin-gecko.service'
 import { defineStore } from 'pinia'
+import DAYS from '@/models/enums/days'
 
 // Define the state interface for the store
 export interface CoinState {
   coins: Coin[]
-  coinsChart: Data[]
+  coinsChart: {
+    [coinId: string]: {
+      [days: number]: Data
+    }
+  }
   coinList: string[]
   daysList: number[]
 }
@@ -20,9 +25,9 @@ export const useCoinStore = defineStore(
     state: () =>
       ({
         coins: [], // List of coins
-        coinsChart: [], // Chart data for coins
+        coinsChart: {}, // Chart data for coins
         coinList: ['bitcoin', 'ethereum'], // List of coin IDs to track
-        daysList: [3], // List of days for chart data
+        daysList: [DAYS.WEEK, DAYS.MONTH], // List of days for chart data
         // daysList: [7, 30, 90, 182, 365], // List of days for chart data
       }) as CoinState,
     getters: {
@@ -59,11 +64,14 @@ export const useCoinStore = defineStore(
         // Loop through each coin and days combination
         for (const coinId of this.coinList) {
           // Initialize the chart data for the coin
+          if (!this.coinsChart[coinId]) {
+            this.coinsChart[coinId] = {};
+          }
           for (const days of this.daysList) {
             // Fetch historical data for each coin and days combination
             coinChartResponse = await CoinGeckoService.getCoinHistory(coinId, days)
             // If the response is valid, format the data and push it to the coins chart
-            if (coinChartResponse && coinChartResponse.prices) {
+            if (coinChartResponse?.prices) {
               // Format the data for the chart and push it to the coins chart
               const formattedData: FormattedData[]
                 = coinChartResponse.prices.map(
@@ -77,7 +85,7 @@ export const useCoinStore = defineStore(
                 )
 
               // Push the formatted data to the coins chart
-              this.coinsChart.push({
+              this.coinsChart[coinId][days] = {
                 labels: formattedData.map((item: FormattedData) => item.date),
                 datasets: [
                   {
@@ -85,7 +93,7 @@ export const useCoinStore = defineStore(
                     data: formattedData.map((item: FormattedData) => item.price),
                   }
                 ]
-              })
+              };
             }
           }
         }
