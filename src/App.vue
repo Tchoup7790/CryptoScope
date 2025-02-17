@@ -5,13 +5,13 @@
   <div class="card-parser">
     <div class="card-parser">
       <!-- Chart component -->
-      <chart-component />
+      <chart-component :coinId="'ethereum'" />
       <!-- Coin converter component -->
       <coin-converter-component />
-      <chart-component class="mobile" />
+      <chart-component class="mobile" :coinId="'bitcoin'" />
     </div>
     <!-- Another chart component -->
-    <chart-component class="no-mobile" />
+    <chart-component class="no-mobile" :coinId="'bitcoin'" />
   </div>
 </template>
 
@@ -49,13 +49,11 @@ import ChartComponent from '@/components/ChartComponent.vue'
   .mobile {
     display: none;
   }
-
 }
 
 @media screen and (min-width: 1025px) {
   .card-parser {
     gap: var(--spacing-l);
   }
-
 }
 </style>

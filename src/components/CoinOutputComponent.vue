@@ -2,59 +2,52 @@
   <!-- Main container for the coin output -->
   <div class="coin-card">
     <!-- Coin details section -->
-    <div class="coin-details">
+    <div v-if="state.coin" class="coin-details">
       <div class="coin-informations">
-        <img :src="coin" alt="coin" class="coin-image" />
-        <h3>{{ state.coin.name }}</h3>
+        <img :src="state.coin?.image.small" alt="coin" class="coin-image" />
+        <h3>{{ state.coin?.name || 'Unknown' }}</h3>
       </div>
       <!-- Display the converted value in USD -->
-      <p>{{ state.coin.price.toFixed(2) }}$</p>
+      <p class="small">{{ state.coin?.market_data.current_price.usd.toFixed(2) || '0.00' }}$</p>
     </div>
     <!-- Coin value section -->
-    <div class="coin-value">
+    <div v-if="state.coin" class="coin-value">
       <h2>{{ state.value.toFixed(2) }}</h2>
-      <h2>{{ state.coin.symbol }}</h2>
+      <h2>{{ state.coin?.symbol || 'N/A' }}</h2>
     </div>
+    <l-jelly v-else style="width: 100%" size="60" speed="0.9" color="rgb(66, 98, 84)" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive, watch } from 'vue'
-import coin from '@/assets/coin.jpeg'
 import type { Coin } from '@/models/interfaces/coin'
+import { useCoinStore } from '@/stores/coin.store'
+
+// Define props
+const props = defineProps<{
+  value: number
+  coinId: string
+}>()
+
+// Access the coin store
+const coinStore = useCoinStore()
 
 // Define the state interface
 interface CoinInputState {
-  coin: Coin
+  coin: Coin | null
   value: number
 }
 
 // Initialize the state
 const state: CoinInputState = reactive({
-  coin: {
-    id: 'ethereum',
-    symbol: 'eth',
-    name: 'Ethereum',
-    price: 3206.56,
-    image: {
-      thumb: 'string',
-      small: 'string',
-      large: 'string',
-    },
-  },
   value: 0,
+  coin: coinStore.getCoinById(props.coinId) || null,
 })
 
-// Define props
-const props = defineProps<{
-  value: number
-}>()
-
-// Watch for changes in the prop value and update the state
-watch(
-  () => props.value,
-  (newVal) => {
-    state.value = parseFloat((newVal / state.coin.price).toFixed(2))
-  },
-)
+// Watch for changes in the props value and coinId
+watch([() => props.value, () => props.coinId], ([value, coinId]) => {
+  state.value = value
+  state.coin = coinStore.getCoinById(coinId) || null
+})
 </script>

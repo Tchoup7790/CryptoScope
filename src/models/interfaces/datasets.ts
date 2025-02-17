@@ -1,5 +1,5 @@
 // Interface representing a dataset for charting
-export interface Dataset {
+export interface Datasets {
   label: string // Label for the dataset
   data: number[] // Data points for the dataset
   borderColor?: string // Optional border color for the dataset

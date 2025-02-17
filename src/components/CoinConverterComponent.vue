@@ -2,9 +2,9 @@
   <!-- Main container for the converter -->
   <article>
     <!-- Input component for entering Bitcoin amount -->
-    <coin-input-component @update:value="handleGetValue" />
+    <coin-input-component coin-id="bitcoin" @update:value="handleGetValue" />
     <!-- Output component for displaying converted Ethereum amount -->
-    <coin-output-component :value="state.value" />
+    <coin-output-component coin-id="ethereum" :value="state.value" />
   </article>
 </template>
 

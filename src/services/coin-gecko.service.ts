@@ -1,6 +1,6 @@
 // Import necessary types and axios for HTTP requests
 import type { Coin } from '@/models/interfaces/coin'
-import type { Dataset } from '@/models/interfaces/dataset'
+import type { CoinChart } from '@/models/interfaces/coin-chart'
 import axios from 'axios'
 
 // Base URL for the CoinGecko API
@@ -29,21 +29,12 @@ export default class CoinGeckoService {
     }
   }
 
-  // Fetch USD price of a coin by ID
-  static async getCoinPrice(coinId: string): Promise<number | null> {
-    try {
-      const response = await axios.get(`${API_URL}/simple/price/${coinId}`)
-      return response.data.usd
-    } catch (error) {
-      console.error(`Error getCoinPrice with id ${coinId} : `, error)
-      return null
-    }
-  }
-
   // Get the history of a coin by ID and by days
-  static async getCoinHistory(coinId: string, days: number): Promise<Dataset | null> {
+  static async getCoinHistory(coinId: string, days: number): Promise<CoinChart | null> {
     try {
-      const response = await axios.get(`${API_URL}/coins/${coinId}/market_chart?days=${days}`)
+      const response = await axios.get(
+        `${API_URL}/coins/${coinId}/market_chart?days=${days}&vs_currency=usd`,
+      )
       return response.data
     } catch (error) {
       console.error(`Error getCoinHistory with id ${coinId} and days ${days} : `, error)
